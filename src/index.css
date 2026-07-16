@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* ==========================================
+   Global Font - Absans
+========================================== */
+@font-face {
+  font-family: "Absans";
+  src: url("/fonts/Absans-Regular.woff2") format("woff2"),
+       url("/fonts/Absans-Regular.woff") format("woff"),
+       url("/fonts/Absans-Regular.otf") format("opentype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Make Tailwind's font-sans = Absans */
+@theme {
+  --font-sans: "Absans", sans-serif;
+}
+
+/* Apply globally */
+html,
+body,
+#root {
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+
+  /* Hide scrollbar for IE, Edge, Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================
+   Lenis
+========================================== */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
