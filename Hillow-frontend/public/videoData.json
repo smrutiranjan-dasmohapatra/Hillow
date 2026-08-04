@@ -1,0 +1,14 @@
+{
+  "description": "An animated or static vector illustration of a green camping tent pitched in front of two palm trees.",
+  "elements": {
+    "tent": {
+      "type": "camping_tent",
+      "color": "shades of green",
+      "style": "flat vector, minimalist"
+    }
+  },
+  "video_analysis": {
+    "duration": "00:02",
+    "motion": "Static graphic presentation"
+  }
+}
