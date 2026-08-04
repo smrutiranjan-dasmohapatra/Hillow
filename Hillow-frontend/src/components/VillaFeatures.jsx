@@ -53,7 +53,7 @@ const FEATURE_DATA = [
 ];
 
 export default function VillaFeatures({
-  blockColor = "#3D4A3E", 
+  blockColor = "#000000",
   textColor = "#000000"   
 }) {
   const [activeIndex, setActiveIndex] = useState(0);

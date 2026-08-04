@@ -1,11 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionHeader from "../components/common/SectionHeader";
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const REVIEWS_DATA = [
   {
@@ -45,19 +40,17 @@ export default function VillaTestimonials({ blockColor = "#3D4A3E", textColor = 
 
   const activeReview = REVIEWS_DATA[currentIndex];
 
-  // GSAP Fade & Slide Transition between Testimonial Cards
   const handleIndexChange = (newIndex) => {
     if (newIndex === currentIndex) return;
 
-    const tl = gsap.timeline({
-      onComplete: () => setCurrentIndex(newIndex)
-    });
-
-    tl.to(contentRef.current, {
+    gsap.to(contentRef.current, {
       opacity: 0,
-      y: -15,
-      duration: 0.3,
-      ease: "power2.in"
+      y: -10,
+      duration: 0.2,
+      ease: "power2.in",
+      onComplete: () => {
+        setCurrentIndex(newIndex);
+      }
     });
   };
 
@@ -65,8 +58,8 @@ export default function VillaTestimonials({ blockColor = "#3D4A3E", textColor = 
     if (contentRef.current) {
       gsap.fromTo(
         contentRef.current,
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
       );
     }
   }, [currentIndex]);
@@ -81,21 +74,21 @@ export default function VillaTestimonials({ blockColor = "#3D4A3E", textColor = 
         <SectionHeader
           title="THE HILLOW / Partner Feedback"
           subtitle="Verified Client & Resident Testimonials"
-            blockColor="#111111"
-            textColor="#111111"
+          blockColor="#111111"
+          textColor="#111111"
         />
       </div>
 
       {/* Main Feedback Carousel Layout */}
       <div className="w-full max-w-5xl mx-auto flex flex-col justify-center items-center flex-grow my-auto py-8">
         
-        {/* Testimonial Card Frame */}
+        {/* Testimonial Card Frame with Fixed Responsive Height */}
         <div 
           ref={cardRef}
-          className="w-full bg-black border border-neutral-800 p-8 sm:p-12 md:p-16 relative shadow-sm flex flex-col justify-between min-h-[340px] sm:min-h-[380px]"
+          className="w-full bg-black border border-neutral-800 p-6 sm:p-10 md:p-14 relative shadow-sm flex flex-col justify-between h-[420px] sm:h-[380px] md:h-[360px]"
         >
           {/* Top Row: Rating & Index Indicator */}
-          <div className="flex justify-between items-center w-full mb-6">
+          <div className="flex justify-between items-center w-full flex-shrink-0">
             <div className="flex items-center gap-1.5">
               {[...Array(activeReview.rating)].map((_, i) => (
                 <svg
@@ -112,12 +105,11 @@ export default function VillaTestimonials({ blockColor = "#3D4A3E", textColor = 
             <span className="text-xs font-mono tracking-widest text-neutral-400">
               0{currentIndex + 1} / 0{REVIEWS_DATA.length}
             </span>
-
           </div>
 
-          {/* Dynamic Content Track */}
-          <div ref={contentRef} className="my-auto space-y-6">
-            <p className="text-xl sm:text-2xl md:text-3xl font-light leading-snug tracking-tight text-white">
+          {/* Dynamic Content Track (Locked inside middle space) */}
+          <div ref={contentRef} className="flex flex-col justify-between flex-grow my-4">
+            <p className="text-lg sm:text-xl md:text-2xl font-light leading-snug tracking-tight text-white line-clamp-4">
               "{activeReview.quote}"
             </p>
 
@@ -137,8 +129,8 @@ export default function VillaTestimonials({ blockColor = "#3D4A3E", textColor = 
             </div>
           </div>
 
-          {/* Navigation Controls inside card footer or corner */}
-          <div className="absolute bottom-6 right-8 sm:right-12 flex items-center gap-2">
+          {/* Navigation Controls inside card bottom right */}
+          <div className="absolute bottom-6 right-6 sm:right-10 flex items-center gap-2">
             {REVIEWS_DATA.map((_, idx) => (
               <button
                 key={idx}
