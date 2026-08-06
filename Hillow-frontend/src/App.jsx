@@ -91,7 +91,9 @@ function App() {
 
       <div
         className={`transition-opacity duration-700 ${
-          isLoading ? "opacity-0 pointer-events-none" : "opacity-100 pointer-events-auto"
+          isLoading
+            ? "opacity-0 pointer-events-none"
+            : "opacity-100 pointer-events-auto"
         }`}
         aria-hidden={isLoading}
       >
@@ -107,7 +109,7 @@ function App() {
           <Hero />
         </section>
 
-         <IntroSection />
+        <IntroSection />
 
         <section id="abb">
           <FeedbackSection userFeedback={latestUserFeedback} />
@@ -116,33 +118,32 @@ function App() {
         <section id="about">
           <AboutSection />
         </section>
-        
 
         <section id="services">
           <DesertJourney />
           <VillaFeatures />
         </section>
-
-          
-
+        <section id="gallery">
+          <GallerySection />
+        </section>
 
         {/* Added VillaTestimonials Section */}
         <section id="testimonials">
           <VillaTestimonials />
         </section>
 
-              <section id="gallery">
-          <GallerySection />
-        </section>
-
-
         <section id="contact">
           <Contact onNewFeedback={(text) => setLatestUserFeedback(text)} />
         </section>
 
-        <LoginDrawer isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-        <BookingDrawer isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
-
+        <LoginDrawer
+          isOpen={isLoginOpen}
+          onClose={() => setIsLoginOpen(false)}
+        />
+        <BookingDrawer
+          isOpen={isBookingOpen}
+          onClose={() => setIsBookingOpen(false)}
+        />
       </div>
     </main>
   );
