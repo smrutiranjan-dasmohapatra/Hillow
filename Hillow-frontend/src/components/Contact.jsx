@@ -131,7 +131,7 @@ export default function Contact({ onNewFeedback }) {
                 <img 
                   src="/images/coom.jpg" 
                   alt="Hillow Sanctuary Video Teaser" 
-                  className="w-full h-full object-cover opacity-40 group-hover:scale-105 group-hover:opacity-30 transition-all duration-500 filter grayscale" 
+                  className="w-full h-full object-cover opacity-40 group-hover:scale-105 group-hover:opacity-30 transition-[transform,opacity] duration-500 filter grayscale will-change-transform transform-gpu" 
                 />
                 
                 {/* Coming Soon Overlay */}
@@ -204,7 +204,7 @@ export default function Contact({ onNewFeedback }) {
 
       {/* LIGHT THEME LOGIN ALERT MODAL */}
       {isLoginModalOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 p-4">
           <div className="w-full max-w-sm bg-white border border-neutral-200 p-8 flex flex-col items-center text-center shadow-2xl rounded-none">
             
             <div className="w-12 h-12 bg-neutral-100 border border-neutral-200 flex items-center justify-center mb-5">
