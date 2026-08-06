@@ -114,7 +114,7 @@ export default function Hero() {
                 <span className="w-1 h-1 bg-white/60 rounded-full" />
                 Play film sequence
               </span>
-              <span className="text-zinc-400 font-light">02:56</span>
+              <span className="text-zinc-400 font-light">0:5</span>
             </div>
           </div>
 

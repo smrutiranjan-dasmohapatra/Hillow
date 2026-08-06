@@ -116,20 +116,23 @@ function App() {
         <section id="about">
           <AboutSection />
         </section>
+        
 
         <section id="services">
           <DesertJourney />
           <VillaFeatures />
         </section>
 
+                <section id="gallery">
+          <GallerySection />
+        </section>
+
+
         {/* Added VillaTestimonials Section */}
         <section id="testimonials">
           <VillaTestimonials />
         </section>
 
-        <section id="gallery">
-          <GallerySection />
-        </section>
 
         <section id="contact">
           <Contact onNewFeedback={(text) => setLatestUserFeedback(text)} />
