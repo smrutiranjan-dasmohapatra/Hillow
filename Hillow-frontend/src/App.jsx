@@ -123,14 +123,16 @@ function App() {
           <VillaFeatures />
         </section>
 
-                <section id="gallery">
-          <GallerySection />
-        </section>
+          
 
 
         {/* Added VillaTestimonials Section */}
         <section id="testimonials">
           <VillaTestimonials />
+        </section>
+
+              <section id="gallery">
+          <GallerySection />
         </section>
 
 
