@@ -118,14 +118,14 @@ export default function GallerySection() {
     <section
       id="gallery"
       ref={containerRef}
-      className="relative w-full h-screen max-h-screen text-white flex flex-col justify-start px-4 sm:px-12 py-5 select-none overflow-hidden will-change-transform"
+      className="relative w-full h-screen max-h-screen bg-black text-white flex flex-col justify-start px-4 sm:px-12 py-5 select-none overflow-hidden will-change-transform"
     >
       {/* Section Header */}
       <SectionHeader
         title="THE Hillow / Gallary & Vision"
         subtitle="Captured for Unfiltered Reflection"
-        blockColor="#111111"
-        textColor="#111111"
+        blockColor="#ffffff"
+        textColor="#ffffff"
       />
 
       {/* Main content area */}
