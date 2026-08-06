@@ -54,7 +54,6 @@ function Contact({ onNewFeedback }) {
 
   const handleFeedbackChange = (e) => {
     const val = e.target.value;
-    // Use transition to keep typing smooth on mobile processors
     startTransition(() => {
       setFeedback(val);
     });
@@ -79,7 +78,7 @@ function Contact({ onNewFeedback }) {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-start">
             
             {/* Brand Callout Statement */}
-            <div className="md:col-span-5 flex flex-col items-start gap-5">
+            <div className="md:col-span-6 flex flex-col items-start gap-5">
               <h2 className="text-3xl sm:text-4xl font-light leading-[1.1] text-white max-w-sm">
                 Escape into<br />the quiet.
               </h2>
@@ -94,7 +93,7 @@ function Contact({ onNewFeedback }) {
             </div>
 
             {/* Quick Navigation Links */}
-            <div className="md:col-span-2 flex flex-col gap-3">
+            <div className="md:col-span-3 flex flex-col gap-3">
               <span className="text-[10px] uppercase font-mono tracking-[0.15em] text-neutral-500 font-semibold">
                 EXPLORE
               </span>
@@ -108,7 +107,7 @@ function Contact({ onNewFeedback }) {
             </div>
 
             {/* Social Links Stack */}
-            <div className="md:col-span-2 flex flex-col gap-3">
+            <div className="md:col-span-3 flex flex-col gap-3">
               <span className="text-[10px] uppercase font-mono tracking-[0.15em] text-neutral-500 font-semibold">
                 CONNECT
               </span>
@@ -126,28 +125,6 @@ function Contact({ onNewFeedback }) {
                   <span>YouTube</span>
                 </li>
               </ul>
-            </div>
-
-            {/* Right Anchored Sanctuary Preview */}
-            <div className="md:col-span-3 flex flex-col items-start gap-2 justify-self-start md:justify-self-end w-full max-w-[240px]">
-              <div className="w-full aspect-[16/9] bg-neutral-900 overflow-hidden relative border border-neutral-800 rounded-none">
-                <img 
-                  src="/images/coom.jpg" 
-                  alt="Hillow Sanctuary Video Teaser" 
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover opacity-40" 
-                />
-                
-                <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-2 text-center text-xs">
-                  <span>Coming Soon</span>
-                </div>
-              </div>
-
-              <div className="text-[11px] font-mono tracking-wide text-neutral-400 font-light flex items-center justify-between w-full">
-                <span>Experience Hillow</span>
-                <span className="text-neutral-600 font-mono text-[10px] uppercase">Teaser</span>
-              </div>
             </div>
 
           </div>
