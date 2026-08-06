@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { 
   ArrowUpRight, 
   MessageSquare
@@ -46,9 +46,18 @@ function Contact({ onNewFeedback }) {
   const currentYear = new Date().getFullYear();
   const [feedback, setFeedback] = useState("");
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [, startTransition] = useTransition();
 
   const handleRequireLogin = () => {
     setIsLoginModalOpen(true);
+  };
+
+  const handleFeedbackChange = (e) => {
+    const val = e.target.value;
+    // Use transition to keep typing smooth on mobile processors
+    startTransition(() => {
+      setFeedback(val);
+    });
   };
 
   const handleFeedbackSubmit = (e) => {
@@ -77,7 +86,7 @@ function Contact({ onNewFeedback }) {
               
               <button 
                 onClick={handleRequireLogin}
-                className="flex items-center gap-3 px-6 py-3 bg-white text-black text-xs sm:text-sm font-medium hover:bg-neutral-200 transition-colors duration-150 cursor-pointer rounded-none border-0 outline-none"
+                className="flex items-center gap-3 px-6 py-3 bg-white text-black text-xs sm:text-sm font-medium hover:bg-neutral-200 transition-colors duration-150 cursor-pointer rounded-none border-0 outline-none active:scale-95"
               >
                 <span>Reserve Your Capsule</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -125,6 +134,8 @@ function Contact({ onNewFeedback }) {
                 <img 
                   src="/images/coom.jpg" 
                   alt="Hillow Sanctuary Video Teaser" 
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover opacity-40" 
                 />
                 
@@ -159,15 +170,16 @@ function Contact({ onNewFeedback }) {
                   <input 
                     type="text" 
                     value={feedback}
-                    onChange={(e) => setFeedback(e.target.value)}
+                    onChange={handleFeedbackChange}
                     placeholder="Your feedback or suggestions..." 
                     required
+                    autoComplete="off"
                     className="w-full bg-neutral-950 text-neutral-200 placeholder-neutral-600 border border-neutral-800 pl-11 pr-4 py-2.5 text-sm focus:outline-none focus:border-neutral-500 rounded-none"
                   />
                 </div>
                 <button 
                   type="submit" 
-                  className="bg-white text-black hover:bg-neutral-200 font-medium px-5 py-2.5 text-sm whitespace-nowrap border-0 rounded-none cursor-pointer"
+                  className="bg-white text-black hover:bg-neutral-200 font-medium px-5 py-2.5 text-sm whitespace-nowrap border-0 rounded-none cursor-pointer active:scale-95"
                 >
                   Submit
                 </button>
@@ -197,7 +209,7 @@ function Contact({ onNewFeedback }) {
 
       {/* LIGHT THEME LOGIN ALERT MODAL */}
       {isLoginModalOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-4">
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
           <div className="w-full max-w-sm bg-white border border-neutral-200 p-6 flex flex-col items-center text-center shadow-xl rounded-none">
             
             <div className="w-10 h-10 bg-neutral-100 border border-neutral-200 flex items-center justify-center mb-4">
